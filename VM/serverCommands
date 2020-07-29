@@ -1,0 +1,5 @@
+sudo apt-get install python27 pyton-pip
+pip install virtualenv
+
+source bin/activate
+pip install -r requirements.txt

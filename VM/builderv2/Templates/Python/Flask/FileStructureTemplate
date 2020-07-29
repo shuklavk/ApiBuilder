@@ -1,0 +1,10 @@
+database
+server
+    Kit
+static
+    styles
+        styles.css
+    scripts
+        library
+        scripts.js
+templates

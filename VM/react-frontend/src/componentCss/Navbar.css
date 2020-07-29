@@ -1,0 +1,98 @@
+/* import { FontSizes } from '@uifabric/fluent-theme/lib/fluent/FluentType'; */
+
+.NavbarHeader{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 100%;
+    height: auto;
+    background-color: #0f6ebe;
+    border-bottom: double rgba(0,0,0, 0.4);
+    box-shadow: 1px 3px rgba(0,0,0, 0.1);
+
+}
+
+.navbarUl, .navbarNav {
+    width: auto;
+    float: right;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbarLi{
+    display: inline-block;
+    padding: 15px 30px;
+}
+
+.navbarLiLogoText{
+    padding:0;
+    display: inline-block;
+}
+
+.navbarLiLogoImage{
+   padding: 0;
+   margin-right: 10px; 
+   display: inline-block;
+}
+
+.navbarLogoDiv{
+    display:flex;
+    padding: 15px 20px;
+}
+
+.navbarLi > #logo-text{
+  padding: 15px 0px;
+}
+
+.navbarImg{
+    width: 35px;
+}
+
+.navbarImg > #logo_image{
+}
+
+.hide-text{
+  text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.navbarA{
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.navbarLogoText{
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 30px; 
+}
+
+/* .navbarA:hover{
+    color: #5bc0de;
+    text-shadow: 1px 1px 1px rgba(0,0,0, 0.4);
+    text-decoration: underline;
+    transition: 0.5s;
+} */
+
+#logo-image, #logo-text{
+}
+
+#logo-text{
+  text-shadow: 3px 3px 3px rgba(0,0,0, 0.4);
+  font-weight: bold;
+}
+
+#logo-text:hover{
+  text-shadow: 1px 1px 1px rgba(0,0,0, 0.4);
+  padding-left: 0px;
+  font-weight: bold;
+}
+
+#overflow-modal{
+  overflow-y: scroll;
+}

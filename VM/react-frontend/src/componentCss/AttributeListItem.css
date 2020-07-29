@@ -1,0 +1,15 @@
+.attributeListItemDropdownDiv{
+    display: flex;
+}
+
+.attributeListItemMainDiv{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1%;
+}
+
+.attributeListItemInput{
+    font-size: 20px;
+    width: 50%;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}

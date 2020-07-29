@@ -1,0 +1,23 @@
+.currentRouteGroupsListMainDiv{
+    /* overflow: scroll; */
+}
+
+.currentRouteGroupsListUl{
+    padding-right: 40px;
+    overflow-y: scroll;
+    max-height: 393px;
+}
+
+.currentRouteGroupsPrimaryButtonDiv{
+    text-align: center;
+}
+
+.currentRouteGroupsPrimaryButton{
+    font-size: 30px;
+    height: 50px;
+    margin: 10px;
+}
+::-webkit-scrollbar {
+    /* width: 0px; */
+    /* background: transparent;  */
+}

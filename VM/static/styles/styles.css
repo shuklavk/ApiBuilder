@@ -1,0 +1,228 @@
+@font-face{
+    font-family: 'signika';
+    src: url('Signika-Bold.ttf');
+}
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+html, body{
+    color: white;
+    height: 100%;
+    background-color: #5BC0BE;
+    font-family: 'signika';
+    width: 100vw;
+}
+
+body
+{
+    overflow: hidden;
+}
+
+#class-name-input{
+    width: 100%;
+    height: 4em;
+}
+
+#pick-class-name-screen{
+    text-align: center;
+}
+.answer-block > div > form > button{
+    height: 4em;
+    width:5em;
+}
+#route-table{
+    width: 100%;
+}
+#class-attribute-table{
+    width: 100%;
+}
+
+/* styles for preship */
+.website-banner{
+    background-color: #1C2541;
+    color: white;
+    font-family: signika;
+}
+
+.website-banner > div > p {
+    margin-left: 10%;
+    margin-bottom: 0;
+    margin-top: .5em;
+    font-size: 3em;
+    cursor: pointer;
+}
+
+#account-link{
+    border-bottom: 6.5em solid orange;
+    border-left: 4em solid transparent;
+    height: 0;
+    width: 100%;
+    float: right;
+}
+
+#account-link > p {
+    margin-top: .5em;
+    margin-left: 30%;
+    font-size: 3em;
+}
+
+#body-container{
+
+}
+
+#welcome {
+    font-size: 8em;
+    text-align: center;
+}
+
+#welcome-sub {
+    font-size: 5em;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    margin-top: -.5em;
+}
+
+#current-route-groups > div > div > hr {
+    margin-top : -5%;
+}
+
+#current-route-group-header {
+    font-size: 2.5em;
+}
+
+.expand-route-link > p {
+    font-size: 2em;
+    margin-left: 40%;
+    margin-top: 0;
+}
+
+#route-collection > button {
+    margin-left: 40%;
+    font-size: 1.5em;
+}
+
+.image{
+  position: static;
+  	top: 0px;
+  	display: block;
+  	overflow: visible;
+  	width: 30%; height: 100%;
+  	max-width: none;
+  	margin-right: auto;
+  	margin-left: 680px;
+  	padding-left: 0px;
+  	-webkit-transition: opacity 200ms ease;
+  	transition: opacity 200ms ease;
+  	t	ext-align: right;
+  	-o-object-fit: fill;
+  	object-fit: fill;
+}
+
+
+/* Create Object Name View Styles */
+
+#create-object-name > div > div > h2,
+#define-object-attributes > div > div > h2,
+#define-single-object > div > div > h2,
+#object-route-view > div > div > h2,
+#single-route-description > div > div > h2{
+    text-align: center;
+    font-size: 2.5em;
+}
+
+#object-options > div > h3
+{
+    font-size: 2em;
+}
+
+#object-options > div > button
+{
+    font-size: 2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#create-object-name > div > div > form > fieldset > input {
+    width: 100%;
+    font-size: 2em;
+}
+
+form {
+    color: black;
+}
+
+#goto-define-object > button, #goto-view-object > button, #generate-api > button {
+    position: absolute;
+    bottom:0px;
+    width: 100%;
+    border-radius: 0;
+    padding-top: 6%;
+    padding-bottom: 6%;
+    font-size: 2em;
+    left: 0px;
+}
+
+.object-attribute-table > tr > td > form > select {
+}
+
+textarea {
+    position: relative;
+    max-width: 75%;
+    color: black;
+}
+
+.description-text {
+    color: black;
+}
+
+.attribute-name {
+    color: black;
+    font-size:1.5em;
+}
+
+tbody {
+    max-width: 50%;
+}
+
+.pure-form {
+    text-align: center;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+}
+
+/* View the routes for a specific object */
+.route {
+    text-align: center;
+    margin-top: 0;
+    font-size: 2em
+}
+
+#route-object-name {
+    padding-bottom: 10%;
+}
+
+#edit-object {
+    width: 100%;
+    margin-bottom: 10%;
+    font-size: 2em;
+}
+
+#route-description {
+}
+
+#request-body > div > div > p {
+    margin-bottom: -10px;
+}
+
+/* Port numbers styling on main page */
+#port_numbers {
+    text-align: center;
+}

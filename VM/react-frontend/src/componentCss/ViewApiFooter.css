@@ -1,0 +1,15 @@
+.ViewApiFooter{
+    text-align: center;
+}
+
+.ViewApiFooterPrimaryButton{
+    font-size: 30px;
+    height: 50px;
+    margin: 50px;
+}
+
+.ViewApiFooterChoiceField{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}

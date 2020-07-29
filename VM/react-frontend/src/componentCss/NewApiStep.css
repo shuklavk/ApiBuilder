@@ -1,0 +1,17 @@
+.stepOne{
+    display: flex;
+    justify-content: space-around;
+}
+
+.stepOneAddApi{
+    width: 45%;
+}
+
+.stepOneHeader{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.stepOneLabel{
+    font-size: 70px;
+}

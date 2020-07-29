@@ -1,0 +1,245 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+        "title": "{{api_name}}",
+        "description": "default api description. appToken: {{app_uuid}}",
+        "version": "default api version"
+    },
+    "servers":[
+        {
+            "url": "http://{{host_ip}}:{{port_number}}",
+            "description": "local virtual machine"
+        }
+    ],
+    "paths":{
+        {% for i, class_details in enumerate(all_class_details) %}
+        "/create{{class_details.class_name}}":{
+            "post":{
+                "tags":[
+                    "{{class_details.class_name}}"
+                ],
+                "requestBody":{
+                    "description":"contains all the fields required to create a {{class_details.class_name}}",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/{{class_details.class_name}}"
+                            }
+                        }
+                    },
+                    "required":"true"
+                },
+                "responses":{
+                    "200":{
+                        "description": "object successfully created",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/{{class_details.class_name}}"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"BAD PARAMS",
+                        "content":{
+                            "application/json":{
+                                "example":{"message":"bad params"}
+                            }
+                        }
+                    },
+                    "default":{
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/read{{class_details.class_name}}":{
+            "post":{
+                "tags":[
+                    "{{class_details.class_name}}"
+                ],
+                "requestBody":{
+                    "description": "The id of the object you are searching for",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "id":{
+                                        "type":"integer"
+                                    },
+                                    "appToken":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required":"true"
+                },
+                "responses":{
+                    "200":{
+                        "description": "object successfully retrieved",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref": "#/components/schemas/{{class_details.class_name}}"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"BAD PARAMS",
+                        "content":{
+                            "application/json":{
+                                "example":{"message":"bad params"}
+                            }
+                        }
+                    },
+                    "default":{
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/update{{class_details.class_name}}":{
+            "post":{
+                "tags":[
+                    "{{class_details.class_name}}"
+                ],
+                "requestBody":{
+                    "description": "Contains updated values. Id is required. All other fields are optional",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "id":{
+                                        "type":"integer"
+                                    },
+                                    "appToken":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required":"true"
+                },
+                "responses":{
+                    "200":{
+                        "description": "object successfully updated",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "properties":{
+
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"BAD PARAMS",
+                        "content":{
+                            "application/json":{
+                                "example":{"message":"bad params"}
+                            }
+                        }
+                    },
+                    "default":{
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/delete{{class_details.class_name}}":{
+            "post":{
+                "tags":[
+                    "{{class_details.class_name}}"
+                ],
+                "requestBody":{
+                    "description": "The id of the object you want to delete",
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "id":{
+                                        "type":"integer"
+                                    },
+                                    "appToken":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required":"true"
+                },
+                "responses":{
+                    "200":{
+                        "description": "object successfully deleted",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"object",
+                                    "properties":{
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"BAD PARAMS",
+                        "content":{
+                            "application/json":{
+                                "example":{"message":"bad params"}
+                            }
+                        }
+                    },
+                    "default":{
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        }{%if i < len(all_class_details)-1%},{%endif%}
+        {% endfor %}
+    },
+    "components":{
+        "schemas":{
+        {% for i, class_details in enumerate(all_class_details) %}
+            "{{class_details.class_name}}":{
+                "type":"object",
+                "required":[
+                    "appToken",
+                    {% for i, attr_name_and_type in enumerate(class_details.attr_name_and_types)%}
+                    "{{attr_name_and_type.name}}"{% if i < len(class_details.attr_name_and_types)-1 %},{%endif%}
+                    {% endfor %}
+                ],
+                "properties":{
+                    "appToken":{
+                        "type":"string"
+                    },
+                    {% for i, attr_name_and_type in enumerate(class_details.attr_name_and_types)%}
+                    "{{attr_name_and_type.name}}":{
+                        "type": "{{attr_name_and_type.type.json}}"
+                        
+                        {% if attr_name_and_type.type.AB == "date and time"%},
+                        "format":"date-time"
+                        {% elif attr_name_and_type.type.json == "number"%},
+                        "format":"double"
+                        {% endif%}
+
+                    }{% if i < len(class_details.attr_name_and_types)-1 %},{%endif%}
+                    {% endfor %}
+                }
+            }{% if i < len(all_class_details)-1 %},{%endif%}
+        {%endfor%}
+        } 
+        
+    }
+}

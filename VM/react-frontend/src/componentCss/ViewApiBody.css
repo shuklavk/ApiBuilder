@@ -1,0 +1,15 @@
+.viewApiRGImageDiv{
+    display: flex;
+    justify-content: space-around;
+    max-width: 1700px;
+    margin: auto;
+}
+
+.viewApiRGDiv{
+    width: 45%;
+}
+
+.viewApiImageDiv{
+    height: 576px;
+    width: 432px;
+}

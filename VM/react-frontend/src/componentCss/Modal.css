@@ -1,0 +1,23 @@
+.modalRouteGroupTitle{
+    font-size: 30px;
+    width: 95%;
+}
+
+.modalAddNewAttributeButton{
+    height: 35px;
+    font-size: 20px;
+}
+
+.modalAddNewAttributeButtonDiv{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* .modalAddNewAttributeList{
+    overflow-y: scroll;
+    max-height: 300px;
+} */
+
+.modalAddNewAttributeSaveButton{
+    margin-right: 20px;
+}

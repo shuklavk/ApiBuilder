@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>API Builder</title>
+
+    <link href="{{url_for('static', filename='styles/styles.css')}}" rel="stylesheet">
+    <link href="../static/styles/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='output.ico') }}">
+    <!-- Import Pure Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+    <!-- For Grids -->
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icon Pack -->
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="../static/styles/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/styles/bootstrapModalsOnly/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="pure-g website-banner">
+        <div class="pure-u-3-4">
+            <p>API Builder</p>
+        </div>
+        <div class="pure-u-1-4">
+            <div id="account-link">
+                <p>User</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+
+        <!-- This code will appear on the main screen when you open the app -->
+        <span class="pure-g" id="current-route-groups">
+            <div class="pure-u-1-8 pure-u-sm-1-8"></div>
+            <div class="pure-u-3-4 pure-u-sm-6-8">
+                <div class="pure-g">
+                    <!-- Modal Youtube Tutorial Explanation code is down below -->
+                    <div id="tutorial-popup">
+                        <!-- Button HTML (to Trigger Modal) -->
+                        <a href="#myModal" class="pure-u-1-1" data-toggle="modal">
+                            <button class="pure-button pure-button-primary">
+                                Quick Walkthrough
+                            </button>
+                        </a>
+
+                        <!-- Modal HTML -->
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="pure-u-1-1" id="tutorial-msg-label">Quick Walkthrough</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe id="tutorialVideo" width="560" height="315" src="https://www.youtube.com/embed/Tmj0Exbza30" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="pure-u-1-1" id="current-route-group-header">Current Route Groups</p>
+                    <div class="pure-g">
+                        <div class="pure-u-1-1" id="route-collection">
+                            <button class="pure-button pure-button-primary">
+                                + Add More
+                            </button>
+                        </div>
+
+                        <div class="pure-u-1-1" id="port_numbers">
+                            <!-- here you should place the port numbers of the server instances -->
+                        </div>
+                        <div class="pure-u-1-1" id="api_names">
+                            <!-- here you should place the api names of the server instances -->
+                        </div>
+
+                        <div class="pure-u-1-1" id="app_uuid">
+                            <!-- here you should place the one time unique app id required to interact with the server -->
+                        </div>
+
+
+                        <div class="pure-u-1-8"></div>
+                    </div>
+                </div>
+
+                <div class="pure-g">
+                    <form id="set-api-name" class="pure-form pure-u-1-1" onsubmit="return false">
+                        <input id="api-name" type="text" placeholder="e.g. brushhero-api">
+                        <button id="set-api-name-button" class="pure-button">Set API name</button>
+                    </form>
+                    <p><img src="{{url_for('static', filename='images/steps_0.png')}}" id="steps-all" alt="" style="float:right" class="image"></p>
+                <form id="generate-api" class="pure-form pure-u-1-1" onsubmit="return false">
+                    <button class="pure-button">Generate Full API!</button>
+                </form>
+            </div>
+            </div>
+            <div class="pure-u-1-8 pure-u-sm-1-8"></div>
+        </span>
+        <span id="create-object-name-span" hidden>
+            <div class="pure-g" id="create-object-name">
+                <div class="pure-u-1-8"></div>
+                <div class="pure-u-3-4">
+                    <div class="pure-g">
+                        <h2 class="pure-u-1-1">Object Name</h2>
+                        <form id="object-name-form" class="pure-form pure-u-1-1">
+                            <fieldset>
+                                <input id="object-name" type="text" placeholder="e.g. User">
+                            </fieldset>
+                        </form>
+                        <div class="pure-u-1-1" id="object-options">
+                            <div class="pure-g" hidden>
+                                <h3 class="pure-u-2-3">CRUD</h3>
+                                <button id="crud-bool" class="bool-button pure-u-1-3 pure-button pure-button-active">Yes</button>
+                            </div>
+                            <div class="pure-g" hidden>
+                                <h3 class="pure-u-2-3">Read Multiple</h3>
+                                <button id="read-multiple-bool" class="bool-button pure-u-1-3 pure-button pure-button-active">No</button>
+                            </div>
+                            <div class="pure-g" hidden>
+                                <h3 class="pure-u-2-3">Read All Objects</h3>
+                                <button id="read-objects-bool" class="bool-button pure-u-1-3 pure-button pure-button-active">No</button>
+                            </div>
+                            <div class="pure-g" hidden>
+                                <h3 class="pure-u-2-3">Single Route (CRUD) </h3>
+                                <button id="single-route-bool" class="bool-button pure-u-1-3 pure-button">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1-8"></div>
+            </div>
+
+            <div class="pure-g">
+                <form id="goto-define-object" class="pure-form pure-u-1-1" onsubmit="return false">
+                    <button class="pure-button">Define Object</button>
+                </form>
+            </div>
+        </span>
+        <span id="define-object-attributes-span" hidden>
+            <div class="pure-g" id="define-object-attributes">
+                <div class="pure-u-1-8"></div>
+                <div class="pure-u-3-4">
+                    <div class="pure-g">
+                        <h2 class="pure-u-1-1">Object Attributes</h2>
+                    </div>
+                    <div class="pure-g pure-u-1-1">
+                        <table class="pure-table pure-table-horizontal">
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th>type</th>
+<!--
+                                    <th>description</th>
+                                    <th>generation</th>
+                                    <th>nullable</th>
+                                    <th>unique</th>
+                                    <th>encrypted</th>
+-->
+                                </tr>
+                            </thead>
+
+                            <tbody class="object-attribute-table">
+                                <tr>
+                                    <td>
+                                        <input class="attribute-name" type="text" value="id" disabled="readonly"/>
+                                    </td>
+                                    <td>
+                                        <form class="pure-form pure-form-stacked">
+                                            <select class="type" disabled="disabled">
+                                                <option>number</option>
+                                                <option>decimal</option>
+                                                <option>word(s)</option>
+                                                <option>true / false</option>
+                                                <option>date and time</option>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <!--
+                                    <td>
+                                        <textarea class="description-text">Unique id in DB</textarea>
+                                    </td>
+
+                                    <td>
+                                        <form class="pure-form pure-form-stacked">
+                                            <select class="generation-types">
+                                                <option>random</option>
+                                                <option>iterative</option>
+                                                <option>input</option>
+                                            </select>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class="pure-form pure-form-stacked">
+                                            <input class="affirm" type="checkbox">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class="pure-form pure-form-stacked">
+                                            <input class="affirm" type="checkbox">
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class="pure-form pure-form-stacked">
+                                            <input class="affirm" type="checkbox">
+                                        </form>
+                                    </td>
+                                    -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pure-g">
+                        <button id="add-attribute-button" class="pure-button">+ Add Attribute</button>
+                    </div>
+                </div>
+                <div class="pure-u-1-8"></div>
+            </div>
+            <div class="pure-g">
+                <form id="goto-view-object" class="pure-form pure-u-1-1" onsubmit="return false">
+                    <button id="generate-api-button" class="pure-button">View Routes</button>
+                </form>
+            </div>
+        </span>
+        <span id="define-single-object-span" hidden>
+            <div class="pure-g" id="define-single-object">
+                <div class="pure-u-1-12"></div>
+                <div class="pure-u-5-6">
+                    <div class="pure-g">
+                        <h2 class="pure-u-1-1">User</h2>
+                    </div>
+                    <div class="pure-g">
+                        <form class="pure-form pure-form-aligned pure-u-1">
+                            <fieldset>
+                                <div class="pure-control-group">
+                                    <label for="type">Type</label>
+                                    <select class="type">
+                                        <option>integer</option>
+                                        <option>decimal</option>
+                                        <option>string</option>
+                                        <option>boolean</option>
+                                        <option>datetime</option>
+                                    </select>
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="description">Description</label>
+                                    <textarea placeholder="describe the qualifier of the object"></textarea>
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="unique">Unique</label>
+                                    <select class="bool">
+                                        <option>yes</option>
+                                        <option>no</option>
+                                    </select>
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="encrypted">Encrypted</label>
+                                    <select class="bool">
+                                        <option>yes</option>
+                                        <option>no</option>
+                                    </select>
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="nullable">Nullable</label>
+                                    <select class="bool">
+                                        <option>yes</option>
+                                        <option>no</option>
+                                    </select>
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="generation">Generation</label>
+                                    <select class="gen-types">
+                                        <option>random</option>
+                                        <option>iterative</option>
+                                        <option>input</option>
+                                        <option>datetime</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <div class="pure-u-1-12"></div>
+            </div>
+            <div class="pure-g">
+                <form id="goto-view-object" class="pure-form pure-u-1-1">
+                    <button class="pure-button">Save</button>
+                </form>
+            </div>
+        </span>
+        <span id="object-routes-view-span" hidden>
+            <div class="pure-g" id="object-route-view">
+                <div class="pure-u-1-8"></div>
+                <div class="pure-u-3-4">
+                    <div class="pure-g" id="route-object-name">
+                        <h2 class="pure-u-1"> User Routes </h3>
+                    </div>
+
+                    <div class="pure-g">
+                        <button class="pure-button" id="edit-object">edit object</button>
+                    </div>
+                    <div id="generated-routes">
+                        <div class="pure-g">
+                            <h3 class="pure-u-1 route"> /createUser </h3>
+                        </div>
+
+                        <div class="pure-g">
+                            <h3 class="pure-u-1 route"> /readUser </h3>
+                        </div>
+
+                        <div class="pure-g">
+                            <h3 class="pure-u-1 route"> /updateUser </h3>
+                        </div>
+
+                        <div class="pure-g">
+                            <h3 class="pure-u-1 route"> /deleteUser </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1-8"></div>
+            </div>
+            <div class="pure-g">
+                <form id="goto-view-object" class="pure-form pure-u-1-1">
+                    <button class="pure-button">Save</button>
+                </form>
+            </div>
+        </span>
+        <span id="single-route-description-span" hidden>
+            <div class="pure-g" id="single-route-description">
+                <div class="pure-u-1-8"></div>
+                <div class="pure-u-3-4">
+                    <div class="pure-g" id="route-object-name">
+                        <h2 class="pure-u-1"> Route /createUser </h3>
+                    </div>
+
+                    <div class="pure-g">
+                        <h3 class="pure-u-1-5">POST</h3>
+                        <div class="pure-u-1-5"></div>
+                        <p id="route-description" class="pure-u-3-5">allows you to upload new user. It would be cool if in the future this would be joined all into one route ... who's gonna code all of that. Would any really give this long of a description???</p>
+                    </div>
+
+                    <div class="pure-g" id="request-body">
+                        <h3 class="pure-u-1-5">Request</h3>
+                        <div class="pure-u-1-5"></div>
+                        <div class="pure-u-3-5">
+                            <div class="pure-g">
+                                <div class="pure-u-1">name</div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1">email</div>
+                            </div>
+                            <div class="pure-g">
+                                <div class="pure-u-1">password</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pure-g">
+                        <h3 class="pure-u-1-5">Response</h3>
+                        <div class="pure-u-1-5"></div>
+                        <div class="pure-u-3-5">
+                            <div class="pure-g">
+                                <p class="pure-u-1">api-key</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="pure-u-1-8"></div>
+            </div>
+            <div class="pure-g">
+                <form id="goto-view-object" class="pure-form pure-u-1-1">
+                    <button class="pure-button">Back</button>
+                </form>
+            </div>
+        </span>
+    </div>
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/scripts.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../static/styles/bootstrapModalsOnly/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            /* Get iframe src attribute value i.e. YouTube video url
+            and store it in a variable */
+            var url = $("#tutorialVideo").attr('src');
+
+            /* Assign empty url value to the iframe src attribute when
+            modal hide, which stop the video playing */
+            $("#myModal").on('hide.bs.modal', function(){
+                $("#tutorialVideo").attr('src', '');
+            });
+
+            /* Assign the initially stored url back to the iframe src
+            attribute when modal is displayed again */
+            $("#myModal").on('show.bs.modal', function(){
+                $("#tutorialVideo").attr('src', url);
+            });
+        });
+        </script>
+</body>
+</html>

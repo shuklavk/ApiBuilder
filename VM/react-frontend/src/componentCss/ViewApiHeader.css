@@ -1,0 +1,16 @@
+.viewApiHeader{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.viewApiHeaderLabel{
+    font-size: 70px;
+}
+
+.viewApiHeaderLabelSpan{
+}
+
+.viewApiHeadDiv{
+    display: flex;
+    justify-content: center;
+}
