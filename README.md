@@ -1,5 +1,5 @@
 # APIBuilder
-This project is live [HERE](https://apibuilder.app/). Original project is in a private repo on Azure Devops. I worked with other teammates, but this README will focus on only my **individual** contributions/experiences. 
+Original project is in a private repo on Azure Devops. I worked with other teammates, but this README will focus on only my **individual** contributions/experiences. 
 
 ## Inspiration
 After participating in multiple hackathons, I started noticing a common pattern for the backend: create a server, create the basic CRUD routes, and connect the server to a database. What if we could make a website, that would take your database tables, and do all the steps to create a backend for you? This way you would not have to spend time setting up a server and database, you can focus on the more difficult features. 
